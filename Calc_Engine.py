@@ -26,8 +26,10 @@ def find_axis(con_pts):
     orientation = 'Top - Bottom' if height > width else 'left - right'
 
     return x_axis, y_axis, orientation
-def washer_method():
-    pass
+
+def washer_method(x_pos, big_R, lit_R ):
+    lit_R = min(lit_R, big_R)
+    return np.trapz(np.pi * (big_R**2 - lit_R**2), x_pos)
 
 def compute_vol():
     pass
