@@ -37,6 +37,15 @@ def compute_vol(x_cords, big_R, lit_R = None):
     else: 
         return washer_method(x_cords, big_R, lit_R)
 
-def rotate_solid():
-    pass
+def rotate_solid(con_px, pixel_cm, inner_con_px = None):
+    con_cm = convert_pix(np.array(con_px), pixel_cm)
+
+    x_axis, y_axis, orientation = find_axis(con_cm)
+
+    if orientation == 'Top - Bottom':
+        x_vals = con_cm[:, 1]
+        big_R = np.abs(con_cm[:, 0] - x_axis)
+    else:
+        x_vals = con_cm[:, 1]
+        big_R = np.abs(con_cm[:, 1] - y_axis)
 
