@@ -26,3 +26,12 @@ def find_axis(con_pts):
     orientation = 'Top - Bottom' if height > width else 'left - right'
 
     return x_axis, y_axis, orientation
+def washer_method():
+    pass
+
+def compute_vol():
+    pass
+
+def rotate_solid():
+    pass
+
