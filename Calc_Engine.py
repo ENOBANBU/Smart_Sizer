@@ -49,3 +49,14 @@ def rotate_solid(con_px, pixel_cm, inner_con_px = None):
         x_vals = con_cm[:, 1]
         big_R = np.abs(con_cm[:, 1] - y_axis)
 
+    sort_idx = np.argsort(x_vals)
+    x_vals = x_vals[sort_idx]
+    big_R = big_R[sort_idx]
+
+    if inner_con_px is not None:
+        in_cm = convert_pix(np.array(inner_con_px), pixel_cm)
+        if orientation == 'Top - Bottom':
+            Lit_R = np.abs(in_cm[:, 0] - x_axis)
+        else:
+            Lit_R = np.abs(in_cm[:, 1] - y_axis)
+            
