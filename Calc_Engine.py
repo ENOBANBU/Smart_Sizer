@@ -59,4 +59,8 @@ def rotate_solid(con_px, pixel_cm, inner_con_px = None):
             Lit_R = np.abs(in_cm[:, 0] - x_axis)
         else:
             Lit_R = np.abs(in_cm[:, 1] - y_axis)
-            
+
+            Lit_R = np.interp(x_vals, np.sort(in_cm[:, 1]), Lit_R[np.argsort(in_cm[:, 1])])
+            return compute_vol(x_vals, big_R, Lit_R)
+        
+    return compute_vol(x_vals, big_R)
