@@ -64,3 +64,6 @@ def rotate_solid(con_px, pixel_cm, inner_con_px = None):
             return compute_vol(x_vals, big_R, Lit_R)
         
     return compute_vol(x_vals, big_R)
+
+def check_engine():
+    pass
