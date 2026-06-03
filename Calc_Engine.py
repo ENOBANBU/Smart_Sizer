@@ -28,8 +28,8 @@ def find_axis(con_pts):
     return x_axis, y_axis, orientation
 
 def washer_method(x_pos, big_R, lit_R ):
-    lit_R = min(lit_R, big_R)
-    return np.trapz(np.pi * (big_R**2 - lit_R**2), x_pos)
+    lit_R = np.minimum(lit_R, big_R)
+    return np.trapezoid(np.pi * (big_R**2 - lit_R**2), x_pos)
 
 def compute_vol(x_cords, big_R, lit_R = None):
     if lit_R is None or np.all(lit_R == 0):
