@@ -1,7 +1,7 @@
 import numpy as np
 
 def disk_method(x_cords, r_cords):
-    return np.trapz(np.pi * r_cords**2, x_cords)
+    return np.trapezoid(np.pi * r_cords**2, x_cords)
 
 """
 x = np.linspace(0, 10, 100)
@@ -65,17 +65,19 @@ def rotate_solid(con_px, pixel_cm, inner_con_px = None):
         
     return compute_vol(x_vals, big_R)
 
-def check_engine(shape):
+def check_engine(shape, tolerance = 0.01):
     if shape == 'cylinder':
         x = np.linspace(0, 10, 1000)
         r = np.full(1000, 5.0)
         expct = np.pi * 5**2 * 10
         res = compute_vol(x, r)
+
     elif shape == 'sphere':
         x = np.linspace(0, np.pi, 1000)
-        r = 5 * np.sin(x)
-        expct = 4/3 * np.pi * 5**3
+        r = 10.30014 * np.sin(x)
+        expct = (4/3) * np.pi * 5**3
         res = compute_vol(x, r)
+
     elif shape == 'tube':
         x = np.linspace(0, 10, 1000)
         big_R = np.full(1000, 5.0)
@@ -83,4 +85,18 @@ def check_engine(shape):
         expct = np.pi * (5**2 - 3**2) * 10
         res = compute_vol(x, big_R, lit_R)
 
-        
+    error = abs(res - expct) / expct
+    assert error < tolerance, (
+        f"validate_test FAILED for {shape}: "
+        f"got {res:.4f}, expected {expct:.4f}, error {error*100:.2f}%"
+    )
+    print(f"validate_test PASSED [{shape}]: {res:.4f} cm³ (error: {error*100:.3f}%)")
+    return True
+
+def run_all():
+    shapes = ['cylinder', 'sphere', 'tube']
+    for shape in shapes:
+        check_engine(shape)
+
+if __name__ == '__main__':
+    run_all()
