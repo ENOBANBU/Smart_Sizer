@@ -65,5 +65,22 @@ def rotate_solid(con_px, pixel_cm, inner_con_px = None):
         
     return compute_vol(x_vals, big_R)
 
-def check_engine():
-    pass
+def check_engine(shape):
+    if shape == 'cylinder':
+        x = np.linspace(0, 10, 1000)
+        r = np.full(1000, 5.0)
+        expct = np.pi * 5**2 * 10
+        res = compute_vol(x, r)
+    elif shape == 'sphere':
+        x = np.linspace(0, np.pi, 1000)
+        r = 5 * np.sin(x)
+        expct = 4/3 * np.pi * 5**3
+        res = compute_vol(x, r)
+    elif shape == 'tube':
+        x = np.linspace(0, 10, 1000)
+        big_R = np.full(1000, 5.0)
+        lit_R = np.full(1000, 3.0)
+        expct = np.pi * (5**2 - 3**2) * 10
+        res = compute_vol(x, big_R, lit_R)
+
+        
