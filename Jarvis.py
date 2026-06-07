@@ -52,6 +52,7 @@ def jarvis_pipline(img_path, pixel_cm, n_pts = 200):
     return smooth_contour
 
 if __name__ == "__main__":
+    from Calc_Engine import rotate_solid
     contour = jarvis_pipline("Jarvis tester.jpg", pixel_cm=10)
-    print("First 5 points:", contour[:5])
-    print("shape:", contour.shape)
+    volume = rotate_solid(contour, pixel_cm=10) #the number 10 used for pixel_cm is just a placeholder
+    print(f"Estimated Volume: {volume:.2f} cubic cm")
