@@ -37,3 +37,16 @@ def smooth_cons(contour, n_pts = 200):
     smooth_y = np.interp(sample_pos, cumulative, contour[:, 1])
 
     return np.column_stack((smooth_x, smooth_y))
+
+def jarvis_pipline(img_path, pixel_cm, n_pts = 200):
+
+    print("loading image...")
+    img = load_img(img_path)
+    print("removing background...")
+    seg_img = seg_obj(img)
+    print("extracting contours...")
+    contour = extract_contours(seg_img)
+    print("smoothing contours...")
+    smooth_contour = smooth_cons(contour, n_pts)
+    print("pipeline completed.")
+    return smooth_contour
