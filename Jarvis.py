@@ -25,3 +25,15 @@ def extract_contours(seg_img):
 
     largest = max(contours, key=cv2.contourArea)
     return largest.reshape(-1, 2)
+
+def smooth_cons(contour, n_pts = 200):
+    deltas = np.diff(contour, axis=0)
+    dists = np.sqrt((deltas ** 2).sum(axis=1))
+    cumulative = np.concatenate([[0], np.cumsum(dists)])
+    tot_len = cumulative[-1]
+    sample_pos = np.linspace(0, tot_len, n_pts)
+
+    smooth_x = np.interp(sample_pos, cumulative, contour[:, 0])
+    smooth_y = np.interp(sample_pos, cumulative, contour[:, 1])
+
+    return np.column_stack((smooth_x, smooth_y))
