@@ -9,3 +9,10 @@ def load_img(path):
     if img is None:
         raise FileNotFoundError(f"Could not load image from path: {path}")
     return img
+
+def seg_obj(img):
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    pil_img = Image.fromarray(img_rgb)
+    output = remove(pil_img)
+
+    return np.array(output)
