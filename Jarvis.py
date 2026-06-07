@@ -16,3 +16,12 @@ def seg_obj(img):
     output = remove(pil_img)
 
     return np.array(output)
+
+def extract_contours(seg_img):
+    alpha_channel = seg_img[:, :, 3]
+    _, binary_mask = cv2.threshold(alpha_channel, 10, 255, cv2.THRESH_BINARY)
+
+    contours, _ = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    largest = max(contours, key=cv2.contourArea)
+    return largest.reshape(-1, 2)
