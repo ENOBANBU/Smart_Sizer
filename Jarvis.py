@@ -50,3 +50,8 @@ def jarvis_pipline(img_path, pixel_cm, n_pts = 200):
     smooth_contour = smooth_cons(contour, n_pts)
     print("pipeline completed.")
     return smooth_contour
+
+if __name__ == "__main__":
+    contour = jarvis_pipline("Jarvis tester.jpg", pixel_cm=10)
+    print("First 5 points:", contour[:5])
+    print("shape:", contour.shape)
