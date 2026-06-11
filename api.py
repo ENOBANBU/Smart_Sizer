@@ -16,7 +16,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.get("/") #decorator, when someone visits this 
+@app.get("/") #decorator, when someone visits this 
 #this next line is executed
 def root():
     return {"Checker": "API works"} #makes sure the app works
+
+@app.post("/scan")
+async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
+    if file.content_type not in ["image/jpeg", "image/png", "image/jpg"]:
+        raise HTTPException(status_code = 400, detail= "File must be an image. Got:" + file.content_type)
+    
