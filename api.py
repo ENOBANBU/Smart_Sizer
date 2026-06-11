@@ -25,4 +25,9 @@ def root():
 async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
     if file.content_type not in ["image/jpeg", "image/png", "image/jpg"]:
         raise HTTPException(status_code = 400, detail= "File must be an image. Got:" + file.content_type)
+    try:
+        contents = await file.read()
+
+        pil_img = Image.open(io.BytesIO(contents)).convert("RGB")
+        img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
     
