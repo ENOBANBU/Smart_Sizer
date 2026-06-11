@@ -19,4 +19,4 @@ app.add_middleware(
 app.get("/") #decorator, when someone visits this 
 #this next line is executed
 def root():
-    return {"Hello": "World"}
+    return {"Checker": "API works"} #makes sure the app works
