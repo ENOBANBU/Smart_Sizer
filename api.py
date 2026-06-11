@@ -7,7 +7,14 @@ import cv2
 from Calc_Engine import rotate_solid
 from Jarvis import jarvis_pipeline
 
-app = FastAPI() #creates HTTP
+app = FastAPI(title="Smart-Sizer API") #creates HTTP
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.get("/") #decorator, when someone visits this 
 #this next line is executed
