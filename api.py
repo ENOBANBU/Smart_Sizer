@@ -30,4 +30,7 @@ async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
 
         pil_img = Image.open(io.BytesIO(contents)).convert("RGB")
         img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail =str(e))
     
