@@ -38,7 +38,7 @@ def smooth_cons(contour, n_pts = 200):
 
     return np.column_stack((smooth_x, smooth_y))
 
-def jarvis_pipline(img_path, pixel_cm, n_pts = 200):
+def jarvis_pipeline(img_path, pixel_cm, n_pts = 200):
 
     print("loading image...")
     img = load_img(img_path)
@@ -53,6 +53,6 @@ def jarvis_pipline(img_path, pixel_cm, n_pts = 200):
 
 if __name__ == "__main__":
     from Calc_Engine import rotate_solid
-    contour = jarvis_pipline("Jarvis tester.jpg", pixel_cm=10)
+    contour = jarvis_pipeline("Jarvis tester.jpg", pixel_cm=10)
     volume = rotate_solid(contour, pixel_cm=10) #the number 10 used for pixel_cm is just a placeholder
     print(f"Estimated Volume: {volume:.2f} cubic cm")
