@@ -10,7 +10,7 @@ function UploadZone({onImageSelected}) {
     }, [onImageSelected]);
     const { getRootProps, getInputProps, isDragActive} = useDropzone({ onDrop, accept:{ 'image/png': [],}, multiple: false,});
     return (
-        <div {...getRootProps()} className = {'uploas-zone ${isDragActive ? 'active' : ''}'}>
+        <div {...getRootProps()} className={`upload-zone ${isDragActive ? 'active' : ''}`}>
             <input {...getInputProps()} />
             {isDragActive ? (<p>Drop the image here...</p> ):( <p>Drag and drop an image here, or click to select one</p>)}
             </div>
