@@ -5,7 +5,7 @@ import ScaleInput from './ScaleInput';
 
 function App() {
   const [image, setImage] = useState(null);
-  const [pixelpCm, setPixelpCm]
+  const [pixelpCm, setPixelpCm] = useState(48)
 
   function handleImageUpload(file){
     setImage(file);
