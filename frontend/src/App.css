@@ -6,3 +6,11 @@
   font-family: -apple-system, sans-serif;
 }
 
+.upload-zone {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding:60px 20px;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
