@@ -32,7 +32,7 @@ function resultView({result, isloading, error}){
                 </p>
             </div>
         );
-    
+
 }
 
 export default resultView;

@@ -2,14 +2,30 @@ import { useState } from 'react';
 import './App.css';
 import UploadZone from './UploadZone';
 import ScaleInput from './ScaleInput';
+import results from './results';
 
 function App() {
   const [image, setImage] = useState(null);
   const [pixelpCm, setPixelpCm] = useState(48)
+  const [result, setResult] = useState(null)
+  const [isload, setIsLoad] = useState(false)
+  const [error, setError] = useState(null)
 
   function handleImageUpload(file){
     setImage(file);
-    console.log('Image uploaded:', file.name);
+    setResult(null);
+    setError(null);
+  }
+
+  async function handleScan(){
+    if (!selectedImage) return;
+    
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('pixel_cm', pixelpCm);
+
+    setIsLoad(true);
+    setError(null);
   }
 
   return(
