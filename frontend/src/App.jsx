@@ -18,7 +18,7 @@ function App() {
   }
 
   async function handleScan(){
-    if (!selectedImage) return;
+    if (!image) return;
     
     const formData = new FormData();
     formData.append('file', image);
@@ -38,8 +38,6 @@ function App() {
       setIsLoading(false);
     }
   }
-
-}
   
 
   return(
@@ -55,6 +53,15 @@ function App() {
     pixelpCm={pixelpCm}
     scaleChange={setPixelpCm}
     />
+
+    <button
+      className="scan-btn"
+      onClick={handleScan}
+      disabled={!image || isload}
+      >
+        {isload ? 'Scanning...' : 'Scan object'}
+      </button>
+      
     </div>
   );
 }
