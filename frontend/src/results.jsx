@@ -1,0 +1,33 @@
+function resultView({result, isloading, error}){
+    if(isloading) {
+        return( 
+        <div className = "loading res">
+            <div className="spinjustu"/>
+            <p>Analyzing image...</p>
+        </div>
+        );
+    }
+    if (error){
+        return(
+            <div className = "e404">
+                <p>Error loading Results</p>
+            </div>
+        );
+    }
+    if (!results) return null;
+    
+        return(
+            <div className = "noRes">
+                <h2>Results</h2>
+                <div className="Display-View">
+                    <span className= "volume-#"> {result.volume_cm3}</span>
+                    <span className = "volume-unit">cm^3</span>
+                </div>
+                <div className="Display-View">
+                    <span className="volume-#">{result.volume_in3}</span>
+                    <span className="volume-unit">in^3</span>
+                </div>
+            </div>
+        )
+    
+}
