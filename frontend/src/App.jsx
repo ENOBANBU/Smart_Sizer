@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import UploadZone from './UploadZone';
 import ScaleInput from './ScaleInput';
-import results from './results';
+import ResultView from './results';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -22,7 +22,7 @@ function App() {
     
     const formData = new FormData();
     formData.append('file', image);
-    formData.append('pixel_cm', pixelpCm);
+    formData.append('pixel_per_cm', pixelpCm);
 
     setIsLoad(true);
     setError(null);
@@ -35,7 +35,7 @@ function App() {
     } catch (err) {
       setError(err.response?.data?.detail || 'Could not reach the API');
     } finally {
-      setIsLoading(false);
+      setIsLoad(false);
     }
   }
   
@@ -62,7 +62,7 @@ function App() {
         {isload ? 'Scanning...' : 'Scan object'}
       </button>
 
-      <ResultsView
+      <ResultView
       result={result}
       isload={isload}
       error={error}

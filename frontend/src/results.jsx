@@ -1,4 +1,4 @@
-function resultView({result, isloading, error}){
+function ResultView({result, isloading, error}){
     if(isloading) {
         return( 
         <div className = "loading res">
