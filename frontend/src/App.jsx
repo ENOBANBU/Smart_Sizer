@@ -8,11 +8,16 @@ function App() {
     setImage(file);
     console.log('Image uploaded:', file.name);
   }
-  
+
   return(
   <div className="app">
     <h1>Smart-Sizer</h1>
-    <p> Uplaod an image to start volume estimation</p>
+    <p> Upload an image to start volume estimation</p>
+
+    <UploadZone onImageSelected={handleImageUpload} />
+    {image && (
+      <p>Selected: {image.name}</p>
+    )}
     </div>
   );
 }
