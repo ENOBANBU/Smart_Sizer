@@ -26,7 +26,21 @@ function App() {
 
     setIsLoad(true);
     setError(null);
+
+    try{
+      const response = await axios.post(`${API_URL}/scan`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      setResult(response.data);
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Could not reach the API');
+    } finally {
+      setIsLoading(false);
+    }
   }
+
+}
+  
 
   return(
   <div className="app">
