@@ -14,3 +14,12 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+.upload-zone:hover{
+  border-color: #888
+}
+
+.upload-zone.active{
+  border-color: #4a9eff;
+  background-color: #f0f7ff;
+}
