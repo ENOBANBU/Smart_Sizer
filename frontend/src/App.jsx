@@ -61,7 +61,12 @@ function App() {
       >
         {isload ? 'Scanning...' : 'Scan object'}
       </button>
-      
+
+      <ResultsView
+      result={result}
+      isload={isload}
+      error={error}
+      />
     </div>
   );
 }
