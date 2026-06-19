@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import UploadZone from './UploadZone';
 
 function App() {
   const [image, setImage] = useState(null);
