@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import UploadZone from './UploadZone';
+import ScaleInput from './ScaleInput';
 
 function App() {
   const [image, setImage] = useState(null);
+  const [pixelpCm, setPixelpCm]
 
   function handleImageUpload(file){
     setImage(file);
@@ -19,6 +21,10 @@ function App() {
     {image && (
       <p>Selected: {image.name}</p>
     )}
+    <ScaleInput
+    pixelpCm={pixelpCm}
+    scaleChange={setPixelpCm}
+    />
     </div>
   );
 }

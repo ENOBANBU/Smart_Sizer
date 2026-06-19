@@ -2,7 +2,7 @@ function ScaleInput({ pixelpCm, scaleChange}){
 return (
     <div className="scale-input">
         <label htmlFor="scale">
-            Reference scale (Picxels per cm)
+            Reference scale (Pixels per cm)
         </label>
         <input
         id = "scale"
