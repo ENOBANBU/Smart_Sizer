@@ -27,7 +27,12 @@ function resultView({result, isloading, error}){
                     <span className="volume-#">{result.volume_in3}</span>
                     <span className="volume-unit">in^3</span>
                 </div>
+                <p className ="con-info">
+                    {result.con_pts} contour points detected
+                </p>
             </div>
-        )
+        );
     
 }
+
+export default resultView;
