@@ -35,4 +35,4 @@ function ResultView({result, isloading, error}){
 
 }
 
-export default resultView;
+export default ResultView;
