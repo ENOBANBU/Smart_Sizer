@@ -14,7 +14,7 @@ function ResultView({result, isloading, error}){
             </div>
         );
     }
-    if (!results) return null;
+    if (!result) return null;
     
         return(
             <div className = "noRes">
