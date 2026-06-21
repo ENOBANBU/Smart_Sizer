@@ -34,6 +34,7 @@ function App() {
       const response = await axios.post(`${API_URL}/scan`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
+      console.log('API response:', response.data);
       setResult(response.data);
     } catch (err) {
       console.log('Full error:', err);

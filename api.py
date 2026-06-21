@@ -37,9 +37,10 @@ async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
 
         return{
             "status": "good",
-            "vol": round(vol, 2),
-            "contour_pts": len(contour),
-            "pixel_cm": pixel_cm
+            "volume_cm3":     round(float(vol), 2),
+            "volume_in3": round(float(vol) * 0.0610237, 2),
+            "contour_points": len(contour),
+            "pixels_per_cm": pixel_cm
         }
 
     except Exception as e:
