@@ -25,7 +25,7 @@ function App() {
     
     const formData = new FormData();
     formData.append('file', image);
-    formData.append('pixel_per_cm', pixelpCm);
+    formData.append('pixels_per_cm', pixelpCm);
 
     setIsLoad(true);
     setError(null);
