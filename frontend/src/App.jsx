@@ -71,7 +71,7 @@ function App() {
 
       <ResultView
       result={result}
-      isload={isload}
+      isloading={isload}
       error={error}
       />
     </div>
