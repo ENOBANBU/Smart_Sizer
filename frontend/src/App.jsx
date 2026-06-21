@@ -3,6 +3,7 @@ import './App.css';
 import UploadZone from './UploadZone';
 import ScaleInput from './ScaleInput';
 import ResultView from './results';
+import axios from 'axios';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -33,6 +34,9 @@ function App() {
       });
       setResult(response.data);
     } catch (err) {
+      console.log('Full error:', err);
+      console.log('Response:', err.response);
+      console.log('Detail:', err.response?.data?.detail);
       setError(err.response?.data?.detail || 'Could not reach the API');
     } finally {
       setIsLoad(false);
