@@ -5,6 +5,8 @@ import ScaleInput from './ScaleInput';
 import ResultView from './results';
 import axios from 'axios';
 
+const API_URL = 'http://localhost:8000';
+
 function App() {
   const [image, setImage] = useState(null);
   const [pixelpCm, setPixelpCm] = useState(48)
