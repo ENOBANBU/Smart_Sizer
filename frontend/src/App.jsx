@@ -35,6 +35,7 @@ function App() {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log('API response:', response.data);
+      console.log('Sending pixels_per_cm:', pixelpCm);
       setResult(response.data);
     } catch (err) {
       console.log('Full error:', err);
