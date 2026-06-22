@@ -22,7 +22,7 @@ def root():
     return {"Checker": "API works"} #makes sure the app works
 
 @app.post("/scan")
-async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
+async def scan_object(file: UploadFile = File(...), pixels_per_cm: float = 10):
     if file.content_type not in ["image/jpeg", "image/png", "image/jpg"]:
         raise HTTPException(status_code = 400, detail= "File must be an image. Got:" + file.content_type)
     try:
@@ -32,15 +32,15 @@ async def scan_object(file: UploadFile = File(...), pixel_cm: float = 10):
         img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
         temp_path = "temp_load.png"
         cv2.imwrite(temp_path, img)
-        contour = jarvis_pipeline(temp_path, pixel_cm)
-        vol = rotate_solid(contour, pixel_cm)
+        contour = jarvis_pipeline(temp_path, pixels_per_cm)
+        vol = rotate_solid(contour, pixels_per_cm)
 
         return{
             "status": "good",
             "volume_cm3":     round(float(vol), 2),
             "volume_in3": round(float(vol) * 0.0610237, 2),
             "contour_points": len(contour),
-            "pixels_per_cm": pixel_cm
+            "pixels_per_cm": pixels_per_cm
         }
 
     except Exception as e:
